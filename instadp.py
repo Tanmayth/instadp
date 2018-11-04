@@ -12,45 +12,45 @@ UserNotFound = "<h2>Sorry, this page isn&#39;t available.</h2>"
 
 
 def getID(username):
-	url = "https://www.instagram.com/{}"
+    url = "https://www.instagram.com/{}"
 
-	r = requests.get(url.format(username))
+    r = requests.get(url.format(username))
 
-	html = r.text
+    html = r.text
 
-	if UserNotFound in html:
-		print("\033[91m✘ Invalid username\033[0m")
-		sys.exit()
+    if UserNotFound in html:
+        print("\033[91m✘ Invalid username\033[0m")
+        sys.exit()
 
-	return re.findall('"id":"(.*?)",', html)[0]
+    return re.findall('"id":"(.*?)",', html)[0]
 
 
 def fetchDP(userID):
-	url = "https://i.instagram.com/api/v1/users/{}/info/"
+    url = "https://i.instagram.com/api/v1/users/{}/info/"
 
-	r = requests.get(url.format(userID))
+    r = requests.get(url.format(userID))
 
-	data = r.json()
+    data = r.json()
 
-	return data['user']['hd_profile_pic_url_info']['url']
+    return data['user']['hd_profile_pic_url_info']['url']
 
 
 def main():
-	parser = argparse.ArgumentParser(description = "Download any users Instagram display picture/profile picture in full quality")
+    parser = argparse.ArgumentParser(description = "Download any users Instagram display picture/profile picture in full quality")
 
-	parser.add_argument('username', action="store", help="username of the Instagram user")
+    parser.add_argument('username', action="store", help="username of the Instagram user")
 
-	args = parser.parse_args()
+    args = parser.parse_args()
 
-	username = args.username
+    username = args.username
 
-	userID = getID(username)
-	file_url = fetchDP(userID)
-	fname = username+".jpg"
-		
-	urllib.request.urlretrieve(file_url, fname)
-	print("\033[92m✔ Downloaded:\033[0m {}".format(fname))
+    userID = getID(username)
+    file_url = fetchDP(userID)
+    fname = username+".jpg"
+
+    urllib.request.urlretrieve(file_url, fname)
+    print("\033[92m✔ Downloaded:\033[0m {}".format(fname))
 
 
 if __name__=="__main__":
-	main()
+    main()
