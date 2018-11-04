@@ -28,7 +28,11 @@ def getID(username):
 def fetchDP(userID):
     url = "https://i.instagram.com/api/v1/users/{}/info/"
 
-    r = requests.get(url.format(userID))
+    try:
+        r = requests.get(url.format(userID))
+    except requests.ConnectionError:
+        print("\033[91m✘ Connection error\033[0m")
+        sys.exit()
 
     data = r.json()
 
@@ -37,7 +41,7 @@ def fetchDP(userID):
 
 def main():
     desc = (
-        "Download any users Instagram display picture/profile "
+        "Download any user's Instagram display profile "
         "picture in full quality"
     )
     parser = argparse.ArgumentParser(description=desc)
