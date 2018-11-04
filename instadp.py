@@ -8,7 +8,7 @@ import argparse
 
 # Maybe we could just check if response is 404?
 UserNotFound = "<h2>Sorry, this page isn&#39;t available.</h2>"
-#spinnerFrames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+# spinnerFrames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 
 
 def getID(username):
@@ -32,13 +32,18 @@ def fetchDP(userID):
 
     data = r.json()
 
-    return data['user']['hd_profile_pic_url_info']['url']
+    return data["user"]["hd_profile_pic_url_info"]["url"]
 
 
 def main():
-    parser = argparse.ArgumentParser(description = "Download any users Instagram display picture/profile picture in full quality")
-
-    parser.add_argument('username', action="store", help="username of the Instagram user")
+    desc = (
+        "Download any users Instagram display picture/profile "
+        "picture in full quality"
+    )
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument(
+        "username", action="store", help="username of the Instagram user"
+    )
 
     args = parser.parse_args()
 
@@ -46,11 +51,11 @@ def main():
 
     userID = getID(username)
     file_url = fetchDP(userID)
-    fname = username+".jpg"
+    fname = "{}.jpg".format(username)
 
     urllib.request.urlretrieve(file_url, fname)
     print("\033[92m✔ Downloaded:\033[0m {}".format(fname))
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
