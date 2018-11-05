@@ -6,9 +6,6 @@ import sys
 
 import requests
 
-
-# Maybe we could just check if response is 404?
-
 # spinnerFrames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 
 
@@ -18,13 +15,14 @@ def getID(username):
     r = requests.get(url.format(username))
 
     html = r.text
-
+    
     if r.ok:
         return re.findall('"id":"(.*?)",', html)[0]
 
     else:
         print("\033[91m✘ Invalid username\033[0m")
         sys.exit()
+
 
 
 def fetchDP(userID):
