@@ -57,8 +57,9 @@ def main():
     if r.ok:
         with open(fname, 'wb') as f:
             f.write(r.content)
-
-    print("\033[92m✔ Downloaded:\033[0m {}".format(fname))
+            print("\033[92m✔ Downloaded:\033[0m {}".format(fname))
+    else:
+        print("Cannot make connection to download image")
 
 
 if __name__ == "__main__":
