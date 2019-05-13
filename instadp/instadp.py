@@ -3,11 +3,7 @@
 import argparse
 import re
 import sys
-
 import requests
-
-
-# spinnerFrames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 
 
 def getID(username):
