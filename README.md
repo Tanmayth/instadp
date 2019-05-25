@@ -6,7 +6,7 @@
 ## Installation
 ### Pip installation
 
-```pip install instadp``` **_not working at the moment_**
+```pip install instadp``` 
 
 ### Git installation
 ```bash
