@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/sdushantha/instadp',
-    py_modules=['instadp']
+    py_modules=['instadp'],
     scripts=['instadp/instadp'],
     install_requires=['requests']
 )
