@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='instadp',
-    version='1.1',
+    version='1.2',
     author='Siddharth Dushantha',
     author_email='siddharth.dushantha@gmail.com',
     description='Download any users Instagram display picture/profile picture in full quality',
