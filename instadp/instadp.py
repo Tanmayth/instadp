@@ -4,12 +4,19 @@ import argparse
 import re
 import sys
 import requests
+from fake_useragent import UserAgent
+
+
+# Avoiding HTTP status_code 429 Error :
+user_agent = UserAgent()
+headers = requests.utils.default_headers()
+headers.update({'User-Agent': user_agent.random})
 
 
 def fetchDP(username):
     url = f"https://www.instagram.com/{username}/?__a=1"
 
-    r = requests.get(url)
+    r = requests.get(url, headers=headers)
 
     if r.ok:
         data = r.json()
