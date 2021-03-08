@@ -14,6 +14,6 @@ setuptools.setup(
     url='https://github.com/sdushantha/instadp',
     py_modules=['instadp'],
     scripts=['instadp/instadp'],
-    install_requires=['requests']
+    install_requires=['requests', 'fake-useragent]
 )
 
